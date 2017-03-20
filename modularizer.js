@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 
 require("./server/config/mongoose.js");
 require("./server/config/routes.js")(app);
-app.listen(2401, function(){console.log("listening on port 2401");
+app.listen(8000, function(){console.log("listening on port 2401");
 })`;
 var routes =
 `var ${model} = require("../controllers/${model}s.js")
@@ -86,7 +86,7 @@ var factory =
   var factory = {};
   return factory;
 }])`;
-var model =
+var serverModel =
 `var mongoose = require('mongoose')
 
 var ${model}Schema = mongoose.Schema({
@@ -246,7 +246,7 @@ fs.mkdir(root, function(err, folder){
           }
           else{
             var newModel = model + ".js"
-            fs.writeFile(path.join(root, "server", "models", newModel), model, "utf8", function(err){
+            fs.writeFile(path.join(root, "server", "models", newModel), serverModel, "utf8", function(err){
               if (err){
                 console.log(err);
               }
